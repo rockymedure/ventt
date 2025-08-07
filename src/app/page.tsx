@@ -79,7 +79,8 @@ export default function Home() {
 
   const playChord = () => {
     try {
-      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const AudioContextClass = window.AudioContext || (window as typeof window & { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      const audioContext = new AudioContextClass();
       
       // C major chord frequencies (C4, E4, G4)
       const frequencies = [261.63, 329.63, 392.00];
@@ -103,7 +104,7 @@ export default function Home() {
         oscillator.start(audioContext.currentTime);
         oscillator.stop(audioContext.currentTime + duration);
       });
-    } catch (error) {
+    } catch {
       // Silently fail if Web Audio API is not supported
       console.log('Audio not supported');
     }
@@ -132,7 +133,7 @@ export default function Home() {
       <header className="bg-white shadow-sm border-b">
         <div className="max-w-2xl mx-auto px-4 py-4">
           <h1 className="text-2xl font-bold text-slate-900">Ventt</h1>
-          <p className="text-sm text-slate-600 mt-1">You're not alone in this journey</p>
+          <p className="text-sm text-slate-600 mt-1">You&apos;re not alone in this journey</p>
         </div>
       </header>
 
@@ -145,7 +146,7 @@ export default function Home() {
             </h2>
             <p className="text-slate-700 text-sm leading-relaxed">
               This is a safe space to share your job search frustrations, celebrate small wins, 
-              and connect with others who understand what you're going through. You're not alone.
+              and connect with others who understand what you&apos;re going through. You&apos;re not alone.
             </p>
           </CardContent>
         </Card>
@@ -160,7 +161,7 @@ export default function Home() {
                   <AvatarFallback className="bg-slate-200">?</AvatarFallback>
                 </Avatar>
                 <div className="flex-1 py-3 px-4 bg-slate-50 rounded-full">
-                  <span className="text-slate-500">What's on your mind today?</span>
+                  <span className="text-slate-500">What&apos;s on your mind today?</span>
                 </div>
               </div>
             </CardContent>
@@ -171,7 +172,7 @@ export default function Home() {
         {showPostForm && (
           <Card className="border-blue-200 shadow-md">
             <CardHeader>
-              <CardTitle className="text-lg">Share what you're feeling</CardTitle>
+              <CardTitle className="text-lg">Share what you&apos;re feeling</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <Textarea
@@ -275,7 +276,7 @@ export default function Home() {
           <CardContent className="pt-6">
             <h3 className="font-semibold text-slate-900 mb-2">Need additional support?</h3>
             <p className="text-slate-700 text-sm mb-3">
-              Remember, it's okay to seek professional help. Here are some resources:
+              Remember, it&apos;s okay to seek professional help. Here are some resources:
             </p>
             <div className="space-y-2 text-sm">
               <div>
