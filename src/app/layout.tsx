@@ -16,7 +16,11 @@ export const metadata: Metadata = {
   title: "Ventt - Find Support After Job Loss",
   description: "A supportive community for people navigating job loss and career transitions. Share your frustrations, connect with others, and find hope together.",
   keywords: "job loss, career support, unemployment, job search, mental health, community",
-  viewport: "width=device-width, initial-scale=1",
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({
